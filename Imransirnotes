@@ -1,0 +1,36 @@
+linux kernal
+interface between hardware & software
+hardware;
+cpu
+memory
+kernal:
+programs
+application
+
+kernel + shell = os (talks to hardware)
+
+what is shell:
+shell is like container
+interface b/w users & kernal
+cli is a shell
+find shell type
+echo $0
+
+shell scripting means:
+do this do that called shell script
+
+types of shell:
+
+gnome 
+kde
+sh
+bash
+csh and tcsh
+ksh
+
+cat /etc/shells
+
+starting shelll
+
+just type the shell name
+
