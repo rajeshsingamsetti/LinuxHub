@@ -34,3 +34,29 @@ starting shelll
 
 just type the shell name
 
+how to run shell script
+absolute path
+/var/www/html
+
+releative path
+./filename
+
+chmod +x filename (after run a shell file)
+
+scripting standards
+end with .sh
+script permission +x (by default script execute permission not allocate)
+script format
+
+#! /bin/bash
+use comments //
+define variables
+commands (echo ,cp,grep)
+statements (if , while,for)
+
+
+
+
+
+
+
