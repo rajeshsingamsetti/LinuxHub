@@ -62,6 +62,34 @@ loops
 functions
 job scheduling & many more
 
+                                    Syallabus for the couse
+How to write shell scripts from basic to advanced level
+what is the shebang line and why every shell script need ones
+how to create and use variables
+testing and decision making
+command line arguments
+input and output
+conditional statements
+exit status
+filter like grep,awk,cut,sed,tr and find
+functions
+wildcards
+loops
+case statements
+logging
+debugging tips
+bash shell options
+working with remote servers
+practice on each topic
+
+
+
+
+
+
+
+
+
 
 
 
