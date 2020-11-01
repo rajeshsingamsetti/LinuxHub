@@ -54,6 +54,17 @@ define variables
 commands (echo ,cp,grep)
 statements (if , while,for)
 
+                                Enhancing the shell scripting by follow concepts
+variables
+filters like grep,cut,awk,&sed commands
+conditional statements
+loops
+functions
+job scheduling & many more
+
+
+
+
 
 
 
