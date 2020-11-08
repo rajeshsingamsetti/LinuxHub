@@ -118,6 +118,10 @@ head -2 filename
 tail filename(last 10 lines it will display)
 =======print range of lines from given file====
 head -12 filename | tail -7 filename
+same above command shortcut
+awk 'NR>=6 && NR<=12 {print}' filename
+sed -n '6,12p' filename
+
 
 
 
