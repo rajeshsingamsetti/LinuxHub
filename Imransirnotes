@@ -83,6 +83,42 @@ working with remote servers
 practice on each topic
 
 ===================================================*============*============*==========================*=========*=========*=======*=============
+shebang line means which line we want to execute
+* to find complete path
+cat /etc/shells
+!#/bin/bash
+
+chmod +x filename
+
+./filename
+
+Redirection operators & stdin,stdout,stderr
+store output of operation
+=====output redirection=====
+> 
+>> (it will append the data to existing file)
+=====input redirection==================
+< to provide the input
+===combining redirection operators==========
+to send standard output of one command to another command as standard input
+| (pipeline symbol)
+1>file1(success) 2>file2(fail)
+
+=============commands to read a file=====
+vi
+cat -n filename
+less (scroll up and scroll down to see the data)
+more
+=======read a file with condition=====
+more -n filename
+more +4 filename
+
+head filename(top 10 lines will display)
+head -2 filename
+tail filename(last 10 lines it will display)
+=======print range of lines from given file====
+head -12 filename | tail -7 filename
+
 
 
 
