@@ -152,6 +152,12 @@ cut -f 2 filename(it will print the 2nd field)
 cut -f 1,3 filename
 cut -f -2 filename (it will print the below two fields from file)
 
+cut -d ":" -f 2 /etc/passwd
+
+==============awk commands==========================
+insted of writing multiple filters we can use the awk command for to perform actions
+
+
 
 
 
