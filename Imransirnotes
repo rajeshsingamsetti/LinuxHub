@@ -122,6 +122,37 @@ same above command shortcut
 awk 'NR>=6 && NR<=12 {print}' filename
 sed -n '6,12p' filename
 
+============grep command======================
+grep is a filter command used to search a string in a file or folder
+
+grep "stringname" filename
+grep "stringname" *(star means all files in current location)
+grep -i "String" filename (i will represents the case sensitive ignore)
+grep -w "String" filename (to match a exact whole word)
+-v is used for not contain that word
+-o only matched words and lines
+-n it will give the line number
+-c it will display the matched no of lines count
+*** -r to search under current directory and sub directory
+grep -r "stringname" .(dot indicates current location)
+-l to display the filenames
+
+advanced grep
+-f search string & pattern from file ,one per line
+-E at a time to search multi strings
+grep -E "line|string|hh" filename
+
+================cut===========================
+cut -c 1 /etc/passwd (it will cutand display the first character)
+cut -c 4,9 /etc/passwd
+cut -c 4-9,12 /etc/passwd
+
+to get strings or fields
+cut -f 2 filename(it will print the 2nd field)
+cut -f 1,3 filename
+cut -f -2 filename (it will print the below two fields from file)
+
+
 
 
 
