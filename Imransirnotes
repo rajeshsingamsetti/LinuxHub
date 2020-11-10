@@ -157,6 +157,12 @@ cut -d ":" -f 2 /etc/passwd
 ==============awk commands==========================
 insted of writing multiple filters we can use the awk command for to perform actions
 
+https://www.geeksforgeeks.org/awk-command-unixlinux-examples/
+
+=======tr===============
+https://www.geeksforgeeks.org/tr-command-in-unix-linux-with-examples/
+======tee====
+https://www.geeksforgeeks.org/tee-command-linux-example/
 
 
 
