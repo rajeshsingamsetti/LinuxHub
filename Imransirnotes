@@ -164,6 +164,39 @@ https://www.geeksforgeeks.org/tr-command-in-unix-linux-with-examples/
 ======tee====
 https://www.geeksforgeeks.org/tee-command-linux-example/
 
+Advanced usage of echos
+echo "$(whoami)"
+
+                  Cronetand (everyday tasks scheduling)
+pariticular one time to run a specific task we can use the " at "
+data
+at 01:50
+type ur shell scripting file
+at> bash myscript.sh
+
+to check list of jobs
+atq
+atrm give jobname
+
+cronetab
+
+minutes hours days monts weekdays coomand/script
+0-59    0-23. 1-31. 1-12  0-6
+
+most used commands
+to schedule a job ==> crontab -e
+list of jobs ==> crontab -l (crontab -u user_name -l)
+remove job ==> crontab -r 
+
+ex:
+* * * * * ls -lrt /tmp/ >> /tmp/test.txt
+
+
+
+
+
+
+
 
 
 
