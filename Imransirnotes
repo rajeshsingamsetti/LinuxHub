@@ -180,7 +180,7 @@ atrm give jobname
 
 cronetab
 
-minutes hours days monts weekdays coomand/script
+minutes hours days months weekdays coomand/script
 0-59    0-23. 1-31. 1-12  0-6
 
 most used commands
@@ -190,6 +190,25 @@ remove job ==> crontab -r
 
 ex:
 * * * * * ls -lrt /tmp/ >> /tmp/test.txt
+
+=========
+ram usage
+free -m(mbs)
+free -g(gbs)
+free -mt(what is available)
+
+if low ram trigger a mail
+free -mt | grep -E "Total" | awk '{print $4}'
+
+============file system monitoring============
+df -h 
+df -h | grep -Ev "udev|tmpfs"
+#! /usr/bin/env bash
+
+mailid="mail.com"
+echo "the file utilization system on $(hostname -s) is: \n $(df -h | grep -Ev "udev|tmpfs")" | /usr/bin/mail -s "file system utilization" "$mailid"
+
+save above script file
 
 
 
