@@ -135,9 +135,98 @@ else
 fi
 done
 ------------
+awk
+sed
+sort
+tr
+tmux
+=============================
+grep => gradual regular expressions
+grep -i where ever it match it will display
+grep -w it matches the word
+grep -n -w it matches the word along with line number
 
-$? --> it will shows the execution status of previous command
+awk we used for data manupulating (without using grep and cut -d ":" -f 1,2,3)
+ex: cat /etc/passwd | awk -F ':' '{print $1,$2,$3}'
 
+**** sed
+By using sed we can replace the data ontime
+echo "https://releases.hashicorp.com/terraform/0.12.28/terraform_0.12.28_linux_amd64.zip" | sed 's/0.12.28/'"$ver"'/g'
+refurl: https://www.geeksforgeeks.org/sed-command-in-linux-unix-with-examples/
+
+** tr is used for converting lowercase to uppercase and remove the spaces
+*** sort is a command is used to arrange a file in alphabetical order
+refurl : https://www.geeksforgeeks.org/sort-command-linuxunix-examples/
+=============================================================
+***multi if condition
+IF Statement - Multiple Conditions:
+ 
+echo -e "1.Morning\n2.Afternoon\n3.Evening\n4.Night"
+echo -n "Please select from above:"
+read n
+if [[ $n -eq 1 ]]
+then
+echo "Good Morning"
+elif [[ $n -eq 2 ]]
+then
+echo "Good Afternoon"
+elif [[ $n -eq 3 ]]
+then
+echo "Good Evening"
+elif [[ $n -eq 4 ]]
+then
+echo "Good Night"
+Fi
+=================================== 
+parameters input
+$?
+$#
+$*
+$@
+
+arrays
+exports
+for & while loops
+
+params examples:
+./script.sh  1 2 3 
+now user enter 3 parameters how we can count that parameters
+ex:
+#! /bin/bash
+echo "to find how many params we can use $#"
+if [ $# -gt 3 ]
+then
+echo "please enter below 3 params only"
+else 
+echo "u have enetered $#"
+echo $1
+echo $2
+echo $3
+echo $4
+fi
+==================
+$? ==> privious ouput return success or not
+
+$* and $@ both are same
+
+this will work on user how many inputs they fill it takes only that inputs
+ex:
+#! /bin/bash
+echo $@
+bash test.sh vm1 vm2
+bash test.sh vm1 vm2 vm3
+
+=======================
+for loop ref
+refurl: https://www.tutorialspoint.com/unix/for-loop.htm
+above $@ same senario in loop
+
+echo $@
+for vm in $@
+do
+echo "shutting vm $vm"
+done
+====================loops================================================
 
 
 
