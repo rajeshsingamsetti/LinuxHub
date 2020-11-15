@@ -22,6 +22,75 @@ for strings
 name = 'Rajesh singamsetty'
 echo $name
 
+============================aws cli installl============================================
+Installing on linux
+
+ubuntu
+refurl: https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html
+
+==============aws configure=================================
+create a user and give aws console access and take security crendeials
+root@ip-172-31-10-135:~# aws configure
+AWS Access Key ID [None]: AKIAQ5WQEB789SLU2BZ4HV
+AWS Secret Access Key [None]: 78jbdjfbd8jbdfjbfkd8knd
+Default region name [None]: ap-south-1
+Default output format [None]: 
+
+after permission add a inline policy
+chooose json:
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:DescribeInstances"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+
+aws ec2 describe-instances --region ap-south-1
+==========================================================================
+
+aws s3 ls
+
+create & upload a file to aws s3
+#! /bin/bash
+i=0
+while [ $i -lt 3]
+do
+date > file$i s3://bucketname
+echo "uploading file$i"
+sleep 2
+i=$(( $i + 1 ))
+done
+
+=============================create a userautomation through shell scripting============================
+#!/bin/bash
+while [ TRUE ]
+do
+read -p "Enter Username 1:" USER1
+read -s -p "Please Enter The Password:" PASSWORD
+if [ -z $USER1 ]; then
+   echo "Please Enter A Valid Username."
+else
+   EXUSER=$(cat /etc/passwd | cut -d ":" -f 1 | grep -w "$USER1")
+   echo $EXUSER
+   if [[ "$EXUSER" == "$USER1" ]]; then
+       echo "User Exists, please enter a unique username"
+   else
+       useradd -m $USER1
+       chown $USER1:$USER1 /home/$USER1
+       echo "$USER1:$PASSWORD" | sudo chpasswd
+       echo "User $USER1 sucessfully created..!!"
+   fi
+fi
+done
+====================================================================================
+
 
 
 
