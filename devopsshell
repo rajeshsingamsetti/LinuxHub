@@ -1,6 +1,6 @@
 
 Aws Devops Real time
-
+set -x -e (for linux shell script debugging mode)
 | (it will take output of previous command to next command
 
 cat filename | bash (to run a script file)
@@ -69,6 +69,26 @@ i=$(( $i + 1 ))
 done
 
 =============================create a userautomation through shell scripting============================
+
+another realtime
+need to check user exist or not && if user not exist create it && set random password at first login
+to check users /etc/passwd
+
+read is used to enter command side input values
+to delete a user userdel -r username
+--now we need to learn operators
+learn this
+https://www.tutorialspoint.com/unix/unix-basic-operators.htm
+-z is check userinput is empty or not(note it only for strings)
+***** linux very important params to know
+$?
+$@
+$*
+$#
+
+$? is used for previously executed command succees or not if it sucees it will return 0 
+echo $?
+
 #!/bin/bash
 while [ TRUE ]
 do
@@ -89,7 +109,34 @@ else
    fi
 fi
 done
-====================================================================================
+================================user automation 2======================
+#!/bin/bash
+while [ TRUE ]; do
+read -p "Enter Username 1:" USER1
+if [ -z $USER1 ]; then
+   echo "Please Enter A Valid Username."
+else
+   EXUSER=$(cat /etc/passwd | cut -d ":" -f 1 | grep -w "$USER1")
+   echo $EXUSER
+   if [[ "$EXUSER" == "$USER1" ]]; then
+       echo "User Exists, please enter a unique username"
+   else
+       useradd -m $USER1
+       ALPHA='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
+       ALPHACHAR=$(echo $ALPHA | fold -w 4 | shuf | head -1)
+       SPEC='!@#$%^&*()_'
+       SPECCHAR=$(echo $SPEC | fold -w1 | shuf | head -1)
+       PASSWORD=India${ALPHACHAR}${SPECCHAR}$RANDOM
+       chown $USER1:$USER1 /home/$USER1
+       echo "$USER1:$PASSWORD" | sudo chpasswd
+       echo "User $USER1 and password is $PASSWORD sucessfully created..!!"
+       passwd -e $USER1
+   fi
+fi
+done
+------------
+
+$? --> it will shows the execution status of previous command
 
 
 
