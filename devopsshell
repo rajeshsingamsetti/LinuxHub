@@ -1,1 +1,28 @@
 
+Aws Devops Real time
+
+| (it will take output of previous command to next command
+
+cat filename | bash (to run a script file)
+
+&& after one command execution other command will 
+
+by using curl we can see that total scripr
+curl: check url
+curl https://get.docker.com | bash && docker version
+
+Variable declaration:
+types of variable declaration
+a=20
+echo $a
+echo "$a"
+echo "${a}"
+
+for strings
+name = 'Rajesh singamsetty'
+echo $name
+
+
+
+
+
