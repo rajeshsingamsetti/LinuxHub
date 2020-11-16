@@ -146,8 +146,9 @@ grep -i where ever it match it will display
 grep -w it matches the word
 grep -n -w it matches the word along with line number
 
-awk we used for data manupulating (without using grep and cut -d ":" -f 1,2,3)
+awk we used for data manupulating the data to save time (without using grep and cut -d ":" -f 1,2,3)
 ex: cat /etc/passwd | awk -F ':' '{print $1,$2,$3}'
+reference url: https://www.geeksforgeeks.org/awk-command-unixlinux-examples/
 
 **** sed
 By using sed we can replace the data ontime
@@ -155,6 +156,17 @@ echo "https://releases.hashicorp.com/terraform/0.12.28/terraform_0.12.28_linux_a
 refurl: https://www.geeksforgeeks.org/sed-command-in-linux-unix-with-examples/
 
 ** tr is used for converting lowercase to uppercase and remove the spaces
+refurls: https://www.tecmint.com/tr-command-examples-in-linux/
+https://www.geeksforgeeks.org/tr-command-in-unix-linux-with-examples/
+
+tmux
+ref url: https://linuxize.com/post/getting-started-with-tmux/
+ctrl + b % is for splitting screens
+
+to go previous menu
+ctrl + b shift < (left arrow mark)
+Ctrl+b x Close the current pane
+
 *** sort is a command is used to arrange a file in alphabetical order
 refurl : https://www.geeksforgeeks.org/sort-command-linuxunix-examples/
 =============================================================
