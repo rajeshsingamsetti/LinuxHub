@@ -239,6 +239,107 @@ do
 echo "shutting vm $vm"
 done
 ====================loops================================================
+=============real time create volumes=================
+Creating volumes
+ 
+#!/bin/bash
+echo $*
+for VOL in $*
+do
+echo "Creating The Volume...."
+aws ec2 create-volume --volume-type gp2 --size $VOL --availability-zone us-east-1a --tag-specifications 'ResourceType=volume,Tags=[{Key=Name,Value=PRODVOL}]'
+done
+
+to run script
+./test.sh 1 2 3 4(no 1 & 2 & 3 & 4 gb volumes are created
+
+================================================================================
+difference between $* and $@
+================================
+params example code
+=========================
+#!/bin/bash
+for x in $*
+do
+echo $x
+done
+echo "==================="
+for x in $@
+do
+echo $x
+done
+echo "==================="
+echo '"$*"'
+for x in "$*"
+do
+echo $x
+done
+echo "==================="
+for x in "$@"
+do
+echo $x
+done
+echo "==================="
+=====================================
+
+========================================================================================
+installing terraform packages and changes versions on real time
+
+#!/bin/bash
+for ver in $(cat version)
+do
+#PACKAGE=$(echo "https://releases.hashicorp.com/terraform/0.12.28/terraform_0.12.28_linux_amd64.zip" | sed 's/0.12.28/'"$ver"'/g')
+#wget https://releases.hashicorp.com/terraform/${ver}/terraform_${ver}_linux_amd64.zip
+#wget $PACKAGE
+ls -al | grep -i terraform
+sleep 5
+done
+====================operators (logical & string & file operators)===================================
+ref url: https://www.tutorialspoint.com/unix/unix-relational-operators.htm
+============if using operators examples=======
+#!/bin/bash
+re='^[0-9]+$'
+if [ $# -gt 0 ]; then
+   for PERSON in $@; do
+       if [[ -n $PERSON ]] && [[ $PERSON =~ $re ]]; then
+           #echo "Lets Create User $PERSON"
+           echo "Username $PERSON is Empty or Invalid User Name."
+       else
+           #echo "Username is Empty or Invalid User Name."
+           echo "Lets Create User $PERSON"
+       fi
+   done
+else
+   echo "No Args Given"
+fi
+
+============ age caculator=======
+
+#!/bin/bash
+while true
+do
+read -p "Please Enter Your Name:" Name
+read -p "Please Enter DOB Year:" DOY
+AGE=$(expr 2020 - $DOY)
+if [ $AGE -le 15 ]; then
+   echo "You are 15 or below, get back to home....!!"
+elif [[ $AGE -gt 15 ]] && [[ $AGE -lt 60 ]]; then
+   echo "Your Are Allowed To Drink....!!"
+else
+   echo "You have cross 60 , stay home and avoid CORONA..!!"
+fi
+done
+
+file operators check files are exist or not
+refurl: https://www.tutorialspoint.com/unix/unix-file-operators.htm
+
+=============array for while======================
+
+
+
+
+
+
 
 
 
