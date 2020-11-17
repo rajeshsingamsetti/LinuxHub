@@ -406,7 +406,195 @@ while [ $X -lt 4 ]; do
    sleep 1
 done
  
+===============Functions======================================
+FUNCTIONS:
+--------------------
+ 
+#!/bin/bash
+usercreate(){
+for USER in $@
+do
+useradd -m $USER
+done
+}
+ 
+passwordcreate(){
+for USER in $@
+do
+PASSWORD=India@${RANDOM}
+chown $USER:$USER /home/$USER
+echo "$USER:$PASSWORD" | sudo chpasswd
+done
+}
+ 
+users(){
+usercreate $@
+passwordcreate $@
+echo "You are planning to create $# users."
+}
+ 
+users $@
+#!/bin/bash
+myuser(){
+read -p "Please enter the UserName:" USER_NAME
+PASSWORD=$(curl -sL https://helloacm.com/api/random/?n=14)
+EXUSER=$(cat /etc/passwd|cut -d ":" -f 1|grep -i ${USER_NAME})
+if [[ "${EXUSER}" == "${USER_NAME}" ]]
+then
+ echo "UserName Already Exists..!!"
+#  exit
+else
+ useradd -m "${USER_NAME}"
+ echo "${PASSWORD}" | passwd --stdin "${USER_NAME}"
+ echo "Created User "${USER_NAME}" & Password will be "${PASSWORD}""
+fi
+echo "User  "${USER_NAME}" created....!!"
+}
+myuser
+ 
+FUNCTION OTHER WAY:
+-------------------
+#!/bin/bash
+function myuser {
+read -p "Please enter the UserName:" USER_NAME
+PASSWORD=$(curl -sL https://helloacm.com/api/random/?n=14)
+EXUSER=$(cat /etc/passwd|cut -d ":" -f 1|grep -i ${USER_NAME})
+if [[ "${EXUSER}" == "${USER_NAME}" ]]
+then
+ echo "UserName Already Exists..!!"
+#  exit
+else
+ useradd -m "${USER_NAME}"
+ echo "${PASSWORD}" | passwd --stdin "${USER_NAME}"
+ echo "Created User "${USER_NAME}" & Password will be "${PASSWORD}""
+fi
+echo "User  "${USER_NAME}" created....!!"
+}
+myuser
+---------------------------------------------------------
+#!/bin/bash
+newuser () {
+ local USERNAME=${@}
+ useradd -m ${USERNAME}
+ echo "The ${USERNAME} is created..!!"o
+}
+ 
+newuser testuser1
+newuser testuser2
+newuser testuser3
+newuser testuser4
+newuser testuser5
+newuser testuser6
+ 
+Global & Loca Variables:
+#!/bin/bash
+NAME="GLOBAL-VARIABLE"
+func(){
+local NAME="LOCAL-VARIABLE"
+echo ${NAME}
+}
+echo ${NAME}
+func
+ 
+ 
+RETURN:
+------
+ 
+#!/bin/bash
+function testing () {
+read -p "Enter the first number:" NUM1
+read -p "Enter the second number:" NUM2
+NEWNUM=$(($NUM1+$NUM2))
+#echo "The New Number is $NEWNUM""
+return ${NEWNUM}
+}
+testing
+GETVAL=${?}
+ 
+ostechnix
+Ostechnix
+o$technix
+linux
+linus
+unix
+technology
+hello world
+HELLO world
+ 
+ 
+CUT:
+----
+cat /etc/passwd | cut -c1-4
+cat /etc/passwd | cut -c4
+cat /etc/passwd | cut -c4-
+cat /etc/passwd | cut -d ":" -f1
+cat /etc/passwd | cut -d ":" -f1,2
+ 
+GREP:
+-----
+cat /etc/passwd | grep -i tes
+cat /etc/passwd | grep -v test
+cat /etc/passwd | grep -i 't$'
+ 
+cat testfile.txt | egrep '^(o|h)'
+cat testfile.txt | egrep -n '^(o|h)'
+cat testfile.txt | egrep -i '^(o|h)'
+egrep '^[l-u]' testfile.txt
+egrep '[l-u]$' testfile.txt
+egrep '[l-y]$' testfile.txt
+egrep '^[l-u]|[L-U]' file.txt (or) egrep '^([l-u]|[L-U])' file.txt
+netstat -a | egrep -i '(CONNECTED | ESTABLISHED)'
+netstat -a | egrep -i '(CONNECTED | LISTEN | ESTABLISHED)'
+ 
+cat /etc/passwd | awk -F ':' '{print $1,$2,$3}'
+cat /etc/passwd | cut -d ":" -f1,2,3
+cat /etc/passwd | awk -F ":" -v OFS=","  '{print $1,$2,$3}'
+cat /etc/passwd | awk -F ":" '{print $1 "," $2 "," $3}'
+cat /etc/passwd | awk -F ":" '{print $1 ",  " $2 ",  " $3}' - Additional comma spaces
+cat /etc/passwd | awk -F ":" '{print "USERNAME:" $1 ",  " $2 ",  " "UID:"$3}'  --(Ammending words)
+ 
+Changing Data Order:
+cat /etc/passwd | awk -F ":" '{print $7 ":"  $1}'
+cat /etc/passwd | awk -F ":" '{print "HOMEDIR:"$6,",""UID:"$3,",""USERNAME:"$1}'
+ 
+SED:
+sed -i "s/.*PasswordAuthentication.*/PasswordAuthentication yes/g" /etc/ssh/sshd_config
+useradd -m testuser10
+echo "testuser10:India@123456" | sudo chpasswd
+passwd -r testuser10
+service sshd restart
+ 
+sed -i '15 a <h1>WELCOME TO DEVOPS</h1>' /var/www/html/index.nginx-debian.html
+To characterize the three tools crudely:
 
+● tr works on characters (changes or deletes them).
+● sed works on lines (modifies words or other parts of lines, or inserts or deletes lines).
+● awk work on records with fields (by default whitespace separated fields on a line, but this may be changed by setting FS and RS).
+ 
+
+Using jq with shell:
+
+https://programminghistorian.org/en/lessons/json-and-jq
+
+curl https://ip-ranges.amazonaws.com/ip-ranges.json | jq '.prefixes[] | .ip_prefix,.service'
+curl https://ip-ranges.amazonaws.com/ip-ranges.json | jq '.prefixes[].ip_prefix'|tr -d '"' >> awsips
+curl https://ip-ranges.amazonaws.com/ip-ranges.json | jq '.prefixes[].ip_prefix,.prefixes[].service'
+ 
+for subnet in $(cat subnets);
+do
+aws ec2 create-subnet --vpc-id vpc-0f47002cff9d8dd21 --cidr-block $subnet --availability-zone us-east-1a;
+done
+ ====================regular expressions=======================
+ ref url:
+ https://www.tutorialspoint.com/unix/unix-regular-expressions.htm
+ https://www.guru99.com/linux-regular-expressions.html#:~:text=What%20are%20Linux%20Regular%20Expressions,%2C%20rename%2C%20sed%2C%20etc.
+ 
+ we manage when crl +f will not suitable
+ cat filename | grep -e ^[0-9] only numbers
+ cat filename | grep -e ^[a-z0-9] 
+ 
+ 
+ 
 
 
 
