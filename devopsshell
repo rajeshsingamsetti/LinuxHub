@@ -58,15 +58,20 @@ aws ec2 describe-instances --region ap-south-1
 aws s3 ls
 
 create & upload a file to aws s3
-#! /bin/bash
-i=0
-while [ $i -lt 3]
+#!/bin/sh
+
+a=0
+
+while [ $a -lt 2 ]
 do
-date > file$i s3://bucketname
-echo "uploading file$i"
+   echo $a
+   aws s3 cp file$a s3://cf-templates-1mj7vc2gv21i9-us-east-1
+echo "uploading file$a"
 sleep 2
-i=$(( $i + 1 ))
+
+a=$(( $a + 1 ))
 done
+
 
 =============================create a userautomation through shell scripting============================
 
@@ -188,7 +193,7 @@ echo "Good Evening"
 elif [[ $n -eq 4 ]]
 then
 echo "Good Night"
-Fi
+fi
 =================================== 
 parameters input
 $?
